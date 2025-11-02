@@ -259,10 +259,8 @@ app.post('/api/request-cv', async (req, res) => {
       ]
     });
 
-    await transporter.sendMail(mailOptions);
-
     // Send notification to you about CV request
-    const notificationOptions = {
+    await resend.emails.send({
       from: process.env.EMAIL_USER,
       to: process.env.RECIPIENT_EMAIL,
       subject: `CV Request from ${name || 'Someone'} (${email})`,
@@ -275,9 +273,7 @@ app.post('/api/request-cv', async (req, res) => {
           <p>The CV has been automatically sent to the requester.</p>
         </div>
       `
-    };
-
-    await transporter.sendMail(notificationOptions);
+    });
 
     res.status(200).json({ 
       success: true, 
