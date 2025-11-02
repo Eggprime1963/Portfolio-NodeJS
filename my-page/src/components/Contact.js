@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { API_BASE_URL } from '../config';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,7 +56,7 @@ const Contact = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ const Contact = () => {
     setCvMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/request-cv', {
+      const response = await fetch(`${API_BASE_URL}/api/request-cv`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
