@@ -1,0 +1,400 @@
+/* React-specific styles and overrides */
+
+/* Loader */
+.fh5co-loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('../public/images/loader.gif') center no-repeat #fff;
+}
+
+/* Button reset for React components */
+.js-gotop {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Go to top button */
+.gototop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.gototop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gototop a {
+  width: 50px;
+  height: 50px;
+  display: table;
+  background: rgba(0, 0, 0, 0.5);
+  color: #FF9000;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.gototop a i {
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.gototop a:hover, .gototop a:active, .gototop a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Navbar toggle button for mobile */
+.navbar-toggle {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-right: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 9px 10px;
+  cursor: pointer;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  background-color: transparent;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #888;
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  margin-bottom: 4px;
+}
+
+.navbar-toggle .icon-bar:last-child {
+  margin-bottom: 0;
+}
+
+/* Portfolio work item hover effects */
+.work {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.work:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Form styling improvements */
+.form-control:focus {
+  border-color: #FF9000;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(255, 144, 0, .1);
+}
+
+/* Animation delays for React components */
+.animate-box {
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.animate-box.fadeIn.animated-fast,
+.animate-box.fadeInUp.animated-fast,
+.animate-box.fadeInLeft.animated-fast,
+.animate-box.fadeInRight.animated-fast {
+  opacity: 1;
+}
+
+/* Social Icons */
+.fh5co-social-icons {
+  margin: 0;
+  padding: 0;
+}
+
+.fh5co-social-icons li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+}
+
+.fh5co-social-icons li a {
+  display: inline-block;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  background-color: #000;
+}
+
+.fh5co-social-icons li a:hover {
+  color: #FF9000;
+}
+
+.fh5co-social-icons li a i {
+  font-size: 20px;
+}
+
+/* Override default React styles */
+.App {
+  text-align: left;
+}
+
+/* Fix full height issues in React */
+.js-fullheight {
+  min-height: 100vh;
+}
+
+.display-t {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+
+.display-tc {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Profile thumb styling */
+.profile-thumb {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  border: 10px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Navigation fixes */
+.navbar {
+  background: transparent;
+  border: none;
+  margin-bottom: 0;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-nav > li > a {
+  color: #fff !important;
+}
+
+.navbar-nav > li > a:hover {
+  color: #FF9000 !important;
+}
+
+/* Section spacing */
+.fh5co-about,
+.fh5co-resume,
+.fh5co-services,
+.fh5co-skills,
+.fh5co-work,
+.fh5co-blog,
+.fh5co-contact {
+  padding: 7em 0;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .profile-thumb {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .fh5co-about,
+  .fh5co-resume,
+  .fh5co-services,
+  .fh5co-skills,
+  .fh5co-work,
+  .fh5co-blog,
+  .fh5co-contact {
+    padding: 4em 0;
+  }
+}
+
+/* Font Awesome support */
+.fa {
+  font-family: "FontAwesome";
+}
+
+/* Progress bars for skills */
+.progress-wrap {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.progress-wrap h3 {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.progress-wrap h3 .name-left {
+  float: left;
+}
+
+.progress-wrap h3 .name-right {
+  float: right;
+}
+
+.progress {
+  height: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.progress-bar {
+  background-color: #FF9000;
+}
+
+/* Testimonial styles */
+.fh5co-testimonial {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 4em 0;
+}
+
+.fh5co-testimonial .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Blog/Achievement styles */
+.fh5co-blog {
+  background: #f8f8f8;
+}
+
+.blog-entry {
+  width: 100%;
+  float: left;
+  background: #fff;
+  margin-bottom: 4em;
+  -webkit-box-shadow: 0px 5px 25px -5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 5px 25px -5px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0px 5px 25px -5px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0px 5px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-entry .blog-img {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-entry .blog-img img {
+  width: 100%;
+  -webkit-transform: scale(1.0);
+  -moz-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  -o-transform: scale(1.0);
+  transform: scale(1.0);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.blog-entry:hover .blog-img img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.blog-entry .desc {
+  width: 100%;
+  float: left;
+  padding: 25px;
+}
+
+.blog-entry .desc h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.blog-entry .desc h3 a {
+  color: #000;
+  text-decoration: none;
+}
+
+.blog-entry .desc h3 a:hover {
+  color: #FF9000;
+}
+
+.blog-entry .desc span {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ccc;
+}
+
+/* Social button styles */
+.social-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  color: #FF9000;
+}
+
+/* Blog link styles */
+.blog-link {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.blog-link:hover {
+  color: #FF9000;
+}
+
+/* Newline helper for contact info */
+.nl {
+  margin: 0;
+  line-height: 1.2;
+}
