@@ -20,7 +20,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     await resend.emails.send({
       from: process.env.EMAIL_FROM,
-      to: process.env.EMAIL_FROM,
+      to: process.env.RECIPIENT_EMAIL,
       subject: 'Resend API Test',
       html: '<p>Email configuration test successful.</p>'
     });
@@ -231,7 +231,7 @@ app.post('/api/contact', async (req, res) => {
 
 app.post('/api/request-cv', async (req, res) => {
   try {
-    const { email, name } = req.body;
+    const { name, email } = req.body;
     
     // Validate email
     if (!email) {
@@ -244,6 +244,16 @@ app.post('/api/request-cv', async (req, res) => {
     const cvPath = path.join(__dirname, '..', 'my-page', 'public', 'MyCV.pdf');
     const emailContent = createCVDeliveryEmail(email, name);
 
+    // Read the CV file
+    const fs = require('fs').promises;
+    let cvBuffer;
+    try {
+      cvBuffer = await fs.readFile(cvPath);
+    } catch (error) {
+      console.error('Error reading CV file:', error);
+      throw new Error('Could not read CV file');
+    }
+
     // Send CV to requester using Resend
     await resend.emails.send({
       from: process.env.EMAIL_FROM,
@@ -253,15 +263,14 @@ app.post('/api/request-cv', async (req, res) => {
       attachments: [
         {
           filename: 'CV.pdf',
-          path: cvPath,
-          contentType: 'application/pdf'
+          content: cvBuffer
         }
       ]
     });
 
     // Send notification to you about CV request
     await resend.emails.send({
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM,
       to: process.env.RECIPIENT_EMAIL,
       subject: `CV Request from ${name || 'Someone'} (${email})`,
       html: `
