@@ -241,7 +241,7 @@ app.post('/api/request-cv', async (req, res) => {
       });
     }
 
-    const cvPath = path.join(__dirname, '..', 'my-page', 'public', 'MyCV.pdf');
+    const cvPath = path.join(__dirname, '..', 'MyCV.pdf');
     const emailContent = createCVDeliveryEmail(email, name);
 
     // Read the CV file
