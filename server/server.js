@@ -246,7 +246,7 @@ app.post('/api/request-cv', async (req, res) => {
 
     // Send CV to requester using Resend
     await resend.emails.send({
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM,
       to: email,
       subject: emailContent.subject,
       html: emailContent.html,
