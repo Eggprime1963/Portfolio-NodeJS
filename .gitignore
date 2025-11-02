@@ -68,11 +68,11 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Temporary folders
 tmp/
 temp/
+php/
 
 # Editor directories and files
 .vscode/settings.json
@@ -92,7 +92,6 @@ ehthumbs.db
 Thumbs.db
 
 # Build directories
-build/
 dist/
 
 # Package lock files (choose one)
