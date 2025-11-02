@@ -1,5 +1,5 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
@@ -12,23 +12,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Email transporter configuration
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_APP_PASSWORD
-  }
-});
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Verify transporter configuration
-transporter.verify((error, success) => {
-  if (error) {
-    console.log('Email transporter configuration error:', error);
-  } else {
+// Verify Resend configuration
+(async () => {
+  try {
+    await resend.emails.send({
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_FROM,
+      subject: 'Resend API Test',
+      html: '<p>Email configuration test successful.</p>'
+    });
     console.log('Email server is ready to take messages');
+  } catch (error) {
+    console.log('Email configuration error:', error);
   }
-});
+})();
 
 // Formal email templates
 const createContactNotificationEmail = (formData) => {
@@ -206,16 +206,14 @@ app.post('/api/contact', async (req, res) => {
     const formData = { name, lastName, email, subject, message };
     const emailContent = createContactNotificationEmail(formData);
 
-    // Send notification email to you
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
+    // Send notification email using Resend
+    await resend.emails.send({
+      from: process.env.EMAIL_FROM,
       to: process.env.RECIPIENT_EMAIL,
+      reply_to: email,
       subject: emailContent.subject,
-      html: emailContent.html,
-      replyTo: email
-    };
-
-    await transporter.sendMail(mailOptions);
+      html: emailContent.html
+    });
 
     res.status(200).json({ 
       success: true, 
@@ -245,9 +243,10 @@ app.post('/api/request-cv', async (req, res) => {
 
     const cvPath = path.join(__dirname, '..', 'my-page', 'public', 'MyCV.pdf');
     const emailContent = createCVDeliveryEmail(email, name);
+    const cvAttachment = await fs.promises.readFile(cvPath);
 
-    // Send CV to requester
-    const mailOptions = {
+    // Send CV to requester using Resend
+    await resend.emails.send({
       from: process.env.EMAIL_USER,
       to: email,
       subject: emailContent.subject,
@@ -259,7 +258,7 @@ app.post('/api/request-cv', async (req, res) => {
           contentType: 'application/pdf'
         }
       ]
-    };
+    });
 
     await transporter.sendMail(mailOptions);
 
