@@ -243,7 +243,6 @@ app.post('/api/request-cv', async (req, res) => {
 
     const cvPath = path.join(__dirname, '..', 'my-page', 'public', 'MyCV.pdf');
     const emailContent = createCVDeliveryEmail(email, name);
-    const cvAttachment = await fs.promises.readFile(cvPath);
 
     // Send CV to requester using Resend
     await resend.emails.send({
