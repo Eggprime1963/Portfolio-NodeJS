@@ -100,7 +100,7 @@ const createContactConfirmationEmail = (formData) => {
             </div>
           </div>
           <div class="footer">
-            <p>This is an automated response to your contact form submission.</p>
+            <p>This is an automated response to your contact form submission. Please respond to the email linked above if needed.</p>
           </div>
         </div>
       </body>
@@ -259,7 +259,7 @@ const createCVDeliveryEmail = (recipientEmail, recipientName) => {
             </div>
           </div>
           <div class="footer">
-            <p>This email was sent in response to a CV request from your portfolio website.</p>
+            <p>This email was sent in response to a CV request from your portfolio website. Please respond to the email linked above if needed.</p>
           </div>
         </div>
       </body>
@@ -287,7 +287,7 @@ app.post('/api/contact', async (req, res) => {
 
     // Send notification email to you using Resend
     await resend.emails.send({
-      from: process.env.EMAIL_FROM,
+      from: process.env.EMAIL_NOTICE,
       to: process.env.RECIPIENT_EMAIL,
       reply_to: email,
       subject: notificationEmail.subject,
@@ -357,7 +357,7 @@ app.post('/api/request-cv', async (req, res) => {
 
     // Send notification to you about CV request
     await resend.emails.send({
-      from: process.env.EMAIL_FROM,
+      from: process.env.EMAIL_NOTICE,
       to: process.env.RECIPIENT_EMAIL,
       subject: `CV Request from ${name || 'Someone'} (${email})`,
       html: `
