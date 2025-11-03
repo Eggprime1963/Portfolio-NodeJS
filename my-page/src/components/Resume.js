@@ -45,7 +45,7 @@ const Resume = () => {
                 <div className="timeline-panel">
                   <div className="timeline-heading">
                     <h3 className="timeline-title">Bachelor's in Software Engineering</h3>
-                    <span className="company">University - 2022 - Present</span>
+                    <span className="company">University - 9/2023 - Present</span>
                   </div>
                   <div className="timeline-body">
                     <p>Currently pursuing a degree in Software Engineering with focus on web development technologies, 
@@ -71,7 +71,7 @@ const Resume = () => {
                 <div className="timeline-panel">
                   <div className="timeline-heading">
                     <h3 className="timeline-title">Programming Fundamentals</h3>
-                    <span className="company">Academic Foundation - 2022</span>
+                    <span className="company">Self-Study & Online Courses - 2023</span>
                   </div>
                   <div className="timeline-body">
                     <p>Strong foundation in programming concepts through Java and Python. 
@@ -84,7 +84,7 @@ const Resume = () => {
                 <div className="timeline-panel">
                   <div className="timeline-heading">
                     <h3 className="timeline-title">High School Diploma</h3>
-                    <span className="company">Secondary Education - 2020 - 2022</span>
+                    <span className="company">Secondary Education - 2016 - 2020</span>
                   </div>
                   <div className="timeline-body">
                     <p>Completed secondary education with focus on mathematics and computer science fundamentals. 
