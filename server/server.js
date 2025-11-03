@@ -31,6 +31,84 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 })();
 
 // Formal email templates
+const createContactConfirmationEmail = (formData) => {
+  return {
+    subject: `Thank you for contacting me - ${formData.name}`,
+    html: `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+          }
+          .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+          }
+          .content {
+            padding: 30px;
+            background-color: #ffffff;
+          }
+          .greeting {
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+          .message {
+            margin-bottom: 20px;
+          }
+          .signature {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+          }
+          .footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="email-container">
+          <div class="header">
+            <h2>Message Received</h2>
+          </div>
+          <div class="content">
+            <div class="greeting">
+              Dear ${formData.name},
+            </div>
+            <div class="message">
+              Thank you for reaching out to me through my portfolio website. I have received your message regarding "${formData.subject}" and will review it promptly.
+            </div>
+            <div class="message">
+              I appreciate your interest and will get back to you as soon as possible.
+            </div>
+            <div class="signature">
+              <p>Best regards,</p>
+              <p><strong>${process.env.YOUR_NAME || 'Portfolio Owner'}</strong></p>
+              <p>${process.env.YOUR_EMAIL || 'your.email@example.com'}</p>
+              <p>${process.env.YOUR_PHONE || ''}</p>
+            </div>
+          </div>
+          <div class="footer">
+            <p>This is an automated response to your contact form submission.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `
+  };
+};
+
 const createContactNotificationEmail = (formData) => {
   return {
     subject: `New Contact Form Submission from ${formData.name}`,
@@ -204,15 +282,24 @@ app.post('/api/contact', async (req, res) => {
     }
 
     const formData = { name, lastName, email, subject, message };
-    const emailContent = createContactNotificationEmail(formData);
+    const notificationEmail = createContactNotificationEmail(formData);
+    const confirmationEmail = createContactConfirmationEmail(formData);
 
-    // Send notification email using Resend
+    // Send notification email to you using Resend
     await resend.emails.send({
       from: process.env.EMAIL_FROM,
       to: process.env.RECIPIENT_EMAIL,
       reply_to: email,
-      subject: emailContent.subject,
-      html: emailContent.html
+      subject: notificationEmail.subject,
+      html: notificationEmail.html
+    });
+
+    // Send confirmation email to the sender
+    await resend.emails.send({
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: confirmationEmail.subject,
+      html: confirmationEmail.html
     });
 
     res.status(200).json({ 
