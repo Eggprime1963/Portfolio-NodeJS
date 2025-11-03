@@ -241,7 +241,7 @@ app.post('/api/request-cv', async (req, res) => {
       });
     }
 
-    const cvPath = path.join(__dirname, 'MyCV.pdf');
+    const cvPath = path.join(__dirname, 'Dang_Phuong_Khoi_Nguyen_Resume.pdf');
     const emailContent = createCVDeliveryEmail(email, name);
 
     // Read the CV file
