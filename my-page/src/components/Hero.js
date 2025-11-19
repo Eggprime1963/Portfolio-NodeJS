@@ -26,15 +26,14 @@ const Hero = () => {
     };
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
+  useEffect(() => {
+      const body = document.querySelector('#root');
+
+      body.scrollIntoView({
+          behavior: 'smooth'
+      }, 500)
+
+  }, []);
 
   return (
     <header id="fh5co-header" className="fh5co-cover js-fullheight" role="banner"
@@ -68,10 +67,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="gototop js-top">
-        <button className="js-gotop" onClick={() => scrollToSection('home')}>
-          <i className="icon-arrow-up22"></i>
-        </button>
+      <div className="gototop js-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
       </div>
     </header>
   );

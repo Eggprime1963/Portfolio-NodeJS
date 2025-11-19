@@ -37,14 +37,6 @@ const Achievements = () => {
       link: 'https://eggprime1963.github.io/city/'
     },
     {
-      id: 3,
-      image: '/images/portfolio-4.jpg',
-      date: 'Sep. 2025',
-      title: 'PlantSmart',
-      description: 'Architected a full-stack plant IoT management PWA using React, Node.js, PostgreSQL, and Python (AI).',
-      link: 'https://eggprime1963.github.io/survey/'
-    },
-    {
       id: 2,
       image: '/images/portfolio-3.jpg',
       date: 'Jan. 2025',
@@ -52,6 +44,14 @@ const Achievements = () => {
       description: 'Built a full-featured portfolio website using React.js with modern animations, responsive design, and component architecture.',
       author: 'James Dang',
       link: '#'
+    },
+    {
+      id: 3,
+      image: '/images/portfolio-4.jpg',
+      date: 'Sep. 2025',
+      title: 'PlantSmart',
+      description: 'Architected a full-stack plant IoT management PWA using React, Node.js, PostgreSQL, and Python (AI).',
+      link: 'https://eggprime1963.github.io/survey/'
     }
   ];
 
@@ -77,20 +77,10 @@ const Achievements = () => {
                 ></div>
                 <div className="blog-text">
                   <span className="posted_on">{achievement.date}</span>
-                  <h3>
-                    <button 
-                      className="blog-link"
-                      onClick={() => console.log(`Clicked ${achievement.title}`)}
-                    >
+                  <h3 className='blog-title justify' >
                       {achievement.title}
-                    </button>
                   </h3>
                   <p>{achievement.description}</p>
-                  <ul className="stuff">
-                    <li><i className="icon-heart2"></i>{achievement.likes}</li>
-                    <li><i className="icon-eye2"></i>100</li>
-                    <li><button className="blog-link"><i className="icon-speech-bubble2"></i>{achievement.comments}</button></li>
-                  </ul>
                 </div>
               </div>
             </div>

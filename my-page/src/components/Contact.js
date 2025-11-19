@@ -141,6 +141,8 @@ const Contact = () => {
                 required
               />
             </div>
+          </div>
+          <div className="row form-group">
             <div className="col-md-6">
               <input 
                 type="text" 
@@ -231,6 +233,8 @@ const Contact = () => {
                   onChange={handleCvInputChange}
                 />
               </div>
+            </div>
+            <div className="row form-group">
               <div className="col-md-6">
                 <input 
                   type="email" 
