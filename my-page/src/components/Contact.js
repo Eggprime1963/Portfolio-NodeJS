@@ -129,7 +129,7 @@ const Contact = () => {
         {/* Contact Form */}
         <form onSubmit={handleSubmit}>
           <div className="row form-group">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <input 
                 type="text" 
                 id="fname" 
@@ -143,7 +143,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="row form-group">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <input 
                 type="text" 
                 id="lname" 
@@ -223,7 +223,7 @@ const Contact = () => {
           
           <form onSubmit={handleCvRequest}>
             <div className="row form-group">
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <input 
                   type="text" 
                   name="name"
@@ -235,7 +235,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="row form-group">
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <input 
                   type="email" 
                   name="email"
