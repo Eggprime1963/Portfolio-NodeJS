@@ -7,23 +7,21 @@ const Skills = () => {
   const skillsRef = useRef(null);
 
   const circularSkills = [
-    { name: 'Java', percentage: 85 },
+    { name: 'Java', percentage: 75 },
     { name: 'Python', percentage: 75 },
-    { name: 'React.js', percentage: 88 },
-    { name: 'Node.js', percentage: 80 },
-    { name: 'JavaScript', percentage: 92 },
-    { name: 'Git/GitHub', percentage: 85 },
+    { name: 'Next.js', percentage: 85 },
+    { name: 'React.js', percentage: 90 },
+    { name: 'Express.js', percentage: 85 },
+    { name: 'HTML5', percentage: 90 },
     { name: 'CSS3', percentage: 90 },
-    { name: 'Problem Solving', percentage: 88 }
+    { name: 'SQL', percentage: 80 }
   ];
 
   const progressSkills = [
-    { name: 'HTML5', percentage: 95 },
-    { name: 'CSS3/SCSS', percentage: 90 },
-    { name: 'JavaScript (ES6+)', percentage: 88 },
-    { name: 'React.js', percentage: 85 },
-    { name: 'Node.js/Express', percentage: 80 },
-    { name: 'Responsive Design', percentage: 92 }
+    { name: 'Git/GitHub', percentage: 85 },
+    { name: 'Responsive Design', percentage: 85 },
+    { name: 'Problem Solving', percentage: 80 },
+    { name: 'Teamwork', percentage: 80 }
   ];
 
   useEffect(() => {
