@@ -71,7 +71,7 @@ const Skills = () => {
         </div>
         <div className="row">
           <div className="col-md-6">
-            {progressSkills.slice(0, 3).map((skill, index) => (
+            {progressSkills.slice(0, 2).map((skill, index) => (
               <div key={skill.name} className={`progress-wrap animate-box ${isVisible ? 'fadeInLeft animated-fast' : ''}`} 
                    style={{animationDelay: `${index * 0.1}s`}}>
                 <h3><span className="name-left">{skill.name}</span><span className="value-right">{skill.percentage}%</span></h3>
@@ -95,7 +95,7 @@ const Skills = () => {
           <div className="col-md-6">
             {progressSkills.slice(2, 4).map((skill, index) => (
               <div key={skill.name} className={`progress-wrap animate-box ${isVisible ? 'fadeInRight animated-fast' : ''}`} 
-                   style={{animationDelay: `${(index + 3) * 0.1}s`}}>
+                   style={{animationDelay: `${(index + 2) * 0.1}s`}}>
                 <h3><span className="name-left">{skill.name}</span><span className="value-right">{skill.percentage}%</span></h3>
                 <div className="progress">
                   <div 
